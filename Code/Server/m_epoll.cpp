@@ -27,8 +27,8 @@ bool M_epoll::mod(int fd, uint32_t event){
     return epoll_ctl(epoll_fd,EPOLL_CTL_MOD,fd,&ev)==0;
 }
 //等待事件产生
-int M_epoll::wait(int timeoutMs = -1){
-    int ev_num = epoll_wait(epoll_fd,&events[0],static_cast<int>(events.size()),timeoutMs);
+int M_epoll::wait(int timeoutMs){
+    int ev_num = epoll_wait(epoll_fd, &events[0], static_cast<int>(events.size()), timeoutMs);
     //动态扩容
     if(ev_num > events.size() * 0.8 && ev_num * 2 <= MAX_FD)events.resize(2 * ev_num);
     return ev_num;

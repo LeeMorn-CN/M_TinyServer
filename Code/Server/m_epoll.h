@@ -1,3 +1,5 @@
+#ifndef M_EPOLL_H
+#define M_EPOLL_H
 #include <sys/epoll.h>
 #include <unistd.h>
 #include <vector>
@@ -16,3 +18,4 @@ private:
     std::vector<epoll_event> events;
     
 };
+#endif
